@@ -16,11 +16,10 @@
     if (typeof window !== 'undefined' && window.L) {
         window.L.YourPlugin = factory(L);
     }
-}(function (L) {
-	// 🍂class GridLayer.GoogleMutant
-	// 🍂extends GridLayer
-	L.GridLayer.GoogleMutant = L.GridLayer.extend({
-		includes: L.Mixin.Events,
+}(function (L) {// @class GridLayer.GoogleMutant
+// @extends GridLayer
+L.GridLayer.GoogleMutant = L.GridLayer.extend({
+	includes: (L.Evented ||L.Mixin.Events),
 
 		options: {
 			minZoom: 0,
@@ -32,7 +31,7 @@
 			opacity: 1,
 			continuousWorld: false,
 			noWrap: false,
-			// 🍂option type: String = 'roadmap'
+			// @option type: String = 'roadmap'
 			// Google's map type. Valid values are 'roadmap', 'satellite' or 'terrain'. 'hybrid' is not really supported.
 			type: 'roadmap',
 			maxNativeZoom: 21
@@ -198,7 +197,7 @@
 				}
 			}.bind(this));
 
-			// 🍂event spawned
+			// @event spawned
 			// Fired when the mutant has been created.
 			this.fire('spawned', {mapObject: map});
 		},
@@ -447,7 +446,7 @@
 	});
 
 
-	// 🍂factory gridLayer.googleMutant(options)
+	// @factory gridLayer.googleMutant(options)
 	// Returns a new `GridLayer.GoogleMutant` given its options
 	L.gridLayer.googleMutant = function (options) {
 		return new L.GridLayer.GoogleMutant(options);
